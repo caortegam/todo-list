@@ -1,0 +1,26 @@
+<p-dialog header="Add TODO" [(visible)]="isVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false" [closeOnEscape]="false">
+  <form [formGroup]="todo">
+    <div class="mb-3 row">
+      <div class="col">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="5" formControlName="description"></textarea>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <div class="col">
+        <label for="priority" class="form-label">Priority</label>
+        <select class="form-select" aria-label="Select priority" name="priority" formControlName="priority">
+          <option value="1">Low</option>
+          <option value="2">Medium</option>
+          <option value="3">Important</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="dueDate" class="form-label">Due date</label>
+        <p-calendar class="form-control" name="dueDate" appendTo="body" formControlName="dueDate"></p-calendar>
+      </div>
+    </div>
+    <p-button (click)="close()" label="Close" class="float-right"></p-button>
+    <p-button (click)="save()" label="Add" class="float-right" [disabled]="!todo.valid"></p-button>
+  </form>
+</p-dialog>
